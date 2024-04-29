@@ -239,12 +239,6 @@ SpriteDescriptorPointers::
 
 INCBIN "baserom.gb", $2c00, $2c68 - $2c00
 
-sprite_descriptor: MACRO
-\1::
-	dw \1Objects
-	db \2, \3
-ENDM
-
 	sprite_descriptor SpriteL0, -17, -16
 	sprite_descriptor SpriteL1, -17, -16
 	sprite_descriptor SpriteL2, -17, -16

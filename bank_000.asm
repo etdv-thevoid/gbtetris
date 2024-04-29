@@ -3086,22 +3086,6 @@ ClearedLinesListReset::
 	jr nz, .loop
 	ret
 
-rowshift: MACRO
-ShiftRow\1::
-	ld a, [hRowToShift]
-	cp \1
-	ret nz
-
-	coord hl, vBGMapA, 2, 19 - \1
-	coord de, wTileMap, 2, 19 - \1
-	call ShiftRow
-ENDM
-
-justrowshift: MACRO
-	rowshift \1
-	ret
-ENDM
-
 	justrowshift 2
 	justrowshift 3
 	justrowshift 4

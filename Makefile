@@ -58,7 +58,7 @@ tidy:
 tools:
 	$(MAKE) -C tools/
 
-RGBASMFLAGS = 
+RGBASMFLAGS = -P includes.asm
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
@@ -95,7 +95,7 @@ tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
 %.gb: $$(%_obj)
-	$(RGBLINK) -n $*.sym -m $*.map -tdp 255 -o $@ $(filter %.o,$^)
+	$(RGBLINK) -n $*.sym -m $*.map -tdp 0xFF -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
 	sort -o $*.sym $*.sym
 
