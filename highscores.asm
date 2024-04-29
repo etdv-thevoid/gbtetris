@@ -232,7 +232,7 @@ ENDR
 	ld [hHighscoreEnterName], a
 
 .no_place_for_new_score:
-	ld de, wTileMap + 13 * BG_MAP_WIDTH + 12
+	ld de, wTileMap + 13 * SCRN_VX_B + 12
 	ld a, [hHighscorePtrHi]
 	ld h, a
 	ld a, [hHighscorePtrLo]
@@ -247,7 +247,7 @@ ENDR
 	pop bc
 	pop de
 
-	ld hl, BG_MAP_WIDTH
+	ld hl, SCRN_VX_B
 	add hl, de
 	push hl
 	pop de
@@ -265,7 +265,7 @@ ENDR
 	dec hl
 	dec hl
 	ld b, HIGHSCORE_ENTRY_COUNT
-	ld de, wTileMap + 13 * BG_MAP_WIDTH + 4
+	ld de, wTileMap + 13 * SCRN_VX_B + 4
 
 .name_loop:
 	push de
@@ -285,7 +285,7 @@ ENDR
 	pop de
 	push hl
 
-	ld hl, BG_MAP_WIDTH
+	ld hl, SCRN_VX_B
 	add hl, de
 	push hl
 	pop de
@@ -304,8 +304,8 @@ VBlank_HighscoreTilemap::
 	and a
 	ret z
 
-	ld hl, vBGMapA  + 13 * BG_MAP_WIDTH + 4
-	ld de, wTileMap + 13 * BG_MAP_WIDTH + 4
+	ld hl, vBGMapA  + 13 * SCRN_VX_B + 4
+	ld de, wTileMap + 13 * SCRN_VX_B + 4
 	ld c, 6
 
 .row_loop:
@@ -334,7 +334,7 @@ VBlank_HighscoreTilemap::
 	jr nz, .area_loop
 
 	pop hl
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 	add hl, de
 
 	push hl ; ld h, d / ld l, e takes 12 T-cycles less
@@ -352,8 +352,8 @@ VBlank_HighscoreTilemap::
 	ret
 
 FillHighscoreTilemapWithDots::
-	ld hl, wTileMap + 13 * BG_MAP_WIDTH + 4
-	ld de, BG_MAP_WIDTH
+	ld hl, wTileMap + 13 * SCRN_VX_B + 4
+	ld de, SCRN_VX_B
 	ld a, "..."
 	ld c, HIGHSCORE_ENTRY_COUNT
 
@@ -374,8 +374,8 @@ FillHighscoreTilemapWithDots::
 
 HandleHighscoreEnterName::
 	ld a, [hHighscorePosition]
-	ld hl, vBGMapA + 15 * BG_MAP_WIDTH + 4
-	ld de, -BG_MAP_WIDTH
+	ld hl, vBGMapA + 15 * SCRN_VX_B + 4
+	ld de, -SCRN_VX_B
 
 .tilemap_add_loop:
 	dec a

@@ -75,16 +75,16 @@ ENDC
 	ld a, " "
 	ld [hl+], a
 	ld a, h
-	cp HIGH(wTileMap + BG_MAP_WIDTH * BG_MAP_HEIGHT)
+	cp HIGH(wTileMap + SCRN_VX_B * BG_MAP_HEIGHT)
 	jr nz, .clear_tilemap
 
 	; essentially dead code
-	ld hl, wTileMap + 0 * BG_MAP_WIDTH + 1
+	ld hl, wTileMap + 0 * SCRN_VX_B + 1
 	call DrawBlackVerticalStrip
-	ld hl, wTileMap + 0 * BG_MAP_WIDTH + 12
+	ld hl, wTileMap + 0 * SCRN_VX_B + 12
 	call DrawBlackVerticalStrip
 
-	ld hl, wTileMap + 18 * BG_MAP_WIDTH + 1 ; offscreen
+	ld hl, wTileMap + 18 * SCRN_VX_B + 1 ; offscreen
 	ld b, 12
 	ld a, $8e ; this is already set by DrawBlackVerticalStrip
 

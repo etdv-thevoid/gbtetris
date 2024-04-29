@@ -896,7 +896,7 @@ Call_000_1216:
 	ld hl, ShuttleGFX
 	ld bc, $1000
 	call Call_000_2838
-	ld hl, vBGMapB + BG_MAP_WIDTH * BG_MAP_HEIGHT - 1
+	ld hl, vBGMapB + SCRN_VX_B * BG_MAP_HEIGHT - 1
 	call ClearTilemap
 	ld hl, $9dc0
 	ld de, LaunchpadTilemap
@@ -1336,7 +1336,7 @@ CopyVerticalStrip::
 	ld [hl], a
 	inc de
 	push de
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 	add hl, de
 	pop de
 	dec b
@@ -2420,7 +2420,7 @@ Copy8TilesWide::
 
 	pop hl
 	push de
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 	add hl, de
 	pop de
 	dec c
@@ -2494,7 +2494,7 @@ FillPlayfieldWithTileAndDoSomethingElseImNotSure::
 FillPlayfieldWithTile::
 	coord hl, wTileMap, 2, 0
 	ld c, SCREEN_HEIGHT
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 .row_loop:
 	push hl
 	ld b, PLAYFIELD_WIDTH
@@ -2816,7 +2816,7 @@ LookForFullLines::
 
 .next_row:
 	push de
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 	add hl, de
 	pop de
 	dec b
@@ -3032,7 +3032,7 @@ HandleRowShift::
 
 	push de
 	push hl
-	ld bc, -BG_MAP_WIDTH
+	ld bc, -SCRN_VX_B
 	add hl, bc
 	pop de
 
@@ -3050,7 +3050,7 @@ HandleRowShift::
 	pop hl
 	push hl
 	pop de
-	ld bc, -BG_MAP_WIDTH
+	ld bc, -SCRN_VX_B
 	add hl, bc
 	ld a, h
 	cp HIGH(wTileMap) - 1
@@ -3778,7 +3778,7 @@ UpdateNextTetromino::
 DrawBlackVerticalStrip::
 	ld b, BG_MAP_HEIGHT
 	ld a, $8e
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 .loop:
 	ld [hl], a
 	add hl, de
@@ -3823,9 +3823,9 @@ TypeBMenuSpriteList::
 INCBIN "baserom.gb", $2741, $27e9 - $2741
 
 ClearTilemapA::
-	ld hl, vBGMapA + BG_MAP_HEIGHT * BG_MAP_WIDTH - 1
+	ld hl, vBGMapA + BG_MAP_HEIGHT * SCRN_VX_B - 1
 ClearTilemap::
-	ld bc, BG_MAP_HEIGHT * BG_MAP_WIDTH
+	ld bc, BG_MAP_HEIGHT * SCRN_VX_B
 .loop:
 	ld a, $2f
 	ld [hl-], a
@@ -3904,7 +3904,7 @@ CopyRowsToTilemap::
 
 	pop hl
 	push de
-	ld de, BG_MAP_WIDTH
+	ld de, SCRN_VX_B
 	add hl, de
 	pop de
 	dec b

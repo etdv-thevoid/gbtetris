@@ -50,11 +50,11 @@ VBlankInterrupt::
 	cp LOCKDOWN_STAGE_BLINK
 	jr nz, .score_done
 
-	ld hl, vBGMapA + 3 * BG_MAP_WIDTH + 13
+	ld hl, vBGMapA + 3 * SCRN_VX_B + 13
 	call RenderScore
 	ld a, 1
 	ld [hScoreDirty], a
-	ld hl, vBGMapB + 3 * BG_MAP_WIDTH + 13
+	ld hl, vBGMapB + 3 * SCRN_VX_B + 13
 	call RenderScore
 	xor a
 	ld [wScoreDirty], a

@@ -58,7 +58,7 @@ SpriteCoordToTilemapAddr::
 	ld de, 0 ; could just load d
 	ld e, a
 	ld hl, vBGMapA
-	ld b, BG_MAP_WIDTH ; you can do this with a simple shift. No need for loops
+	ld b, SCRN_VX_B ; you can do this with a simple shift. No need for loops
 .multiply_loop:
 	add hl, de
 	dec b

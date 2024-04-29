@@ -3,11 +3,11 @@ MACRO jumptable
 ENDM
 
 MACRO coord
-	ld \1, (\2) + (\4) * BG_MAP_WIDTH + (\3)
+	ld \1, (\2) + (\4) * SCRN_VX_B + (\3)
 ENDM
 
 MACRO coordh
-	ld \1, HIGH((\2) + (\4) * BG_MAP_WIDTH + (\3))
+	ld \1, HIGH((\2) + (\4) * SCRN_VX_B + (\3))
 ENDM
 
 DEF tile EQUS "+ 16 *"
