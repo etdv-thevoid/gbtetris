@@ -75,7 +75,7 @@ ENDC
 	ld a, " "
 	ld [hl+], a
 	ld a, h
-	cp HIGH(wTileMap + SCRN_VX_B * BG_MAP_HEIGHT)
+	cp HIGH(wTileMap + SCRN_VX_B * SCRN_VY_B)
 	jr nz, .clear_tilemap
 
 	; essentially dead code

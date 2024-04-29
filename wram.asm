@@ -59,7 +59,7 @@ wRandomness::
 SECTION "Tile Map Buffer", WRAM0[$c800]
 ; not used all the time
 wTileMap::
-	ds SCRN_VX_B * BG_MAP_HEIGHT
+	ds SCRN_VX_B * SCRN_VY_B
 SECTION "Stack", WRAM0[$cf00]
 wStack::
 	ds $100

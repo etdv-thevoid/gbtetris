@@ -896,7 +896,7 @@ Call_000_1216:
 	ld hl, ShuttleGFX
 	ld bc, $1000
 	call Call_000_2838
-	ld hl, vBGMapB + SCRN_VX_B * BG_MAP_HEIGHT - 1
+	ld hl, vBGMapB + SCRN_VX_B * SCRN_VY_B - 1
 	call ClearTilemap
 	ld hl, $9dc0
 	ld de, LaunchpadTilemap
@@ -3776,7 +3776,7 @@ UpdateNextTetromino::
 	ret
 
 DrawBlackVerticalStrip::
-	ld b, BG_MAP_HEIGHT
+	ld b, SCRN_VY_B
 	ld a, $8e
 	ld de, SCRN_VX_B
 .loop:
@@ -3823,9 +3823,9 @@ TypeBMenuSpriteList::
 INCBIN "baserom.gb", $2741, $27e9 - $2741
 
 ClearTilemapA::
-	ld hl, vBGMapA + BG_MAP_HEIGHT * SCRN_VX_B - 1
+	ld hl, vBGMapA + SCRN_VY_B * SCRN_VX_B - 1
 ClearTilemap::
-	ld bc, BG_MAP_HEIGHT * SCRN_VX_B
+	ld bc, SCRN_VY_B * SCRN_VX_B
 .loop:
 	ld a, $2f
 	ld [hl-], a
