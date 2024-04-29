@@ -31,9 +31,9 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all tetris tetris11 compare compare11 clean tidy tools
+.PHONY: tetris tetris11 compare compare11 clean tidy tools
+.DEFAULT_GOAL := tetris
 
-all:      $(roms)
 tetris:   tetris.gb
 tetris11: tetris11.gb
 

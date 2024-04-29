@@ -62,29 +62,47 @@ jobs:
         run: |
           wget ${{ env.BASEROM_ARCHIVE_URL }} -O ${{ env.BASEROM_FILENAME }}
 
-      # DOWNLOAD BASEROM11
-      - id: download-baserom11
-        name: "Download baserom11"
+      # BUILD ROM
+      - id: build-rom
+        name: "Build rom"
         run: |
-          wget ${{ env.BASEROM11_ARCHIVE_URL }} -O ${{ env.BASEROM11_FILENAME }}
-
-      # BUILD ROMS
-      - id: build-roms
-        name: "Build roms"
-        run: |
-          make
+          make tetris
       
-      # COMPARE ROMS
-      - id: compare-roms
-        name: "Compare roms"
+      # COMPARE ROM
+      - id: compare-rom
+        name: "Compare rom"
         run: |
           make compare
 
-      # REMOVE BASEROMS
+      # REMOVE BASEROM
       - id: remove-baseroms
         name: "Remove baseroms"
         run: |
-          rm baserom*
+          rm ${{ env.BASEROM_FILENAME }}
+      
+      # # DOWNLOAD BASEROM11
+      # - id: download-baserom11
+      #   name: "Download baserom11"
+      #   run: |
+      #     wget ${{ env.BASEROM11_ARCHIVE_URL }} -O ${{ env.BASEROM11_FILENAME }}
+      
+      # # BUILD ROM11
+      # - id: build-rom11
+      #   name: "Build rom11"
+      #   run: |
+      #     make tetris11
+      
+      # # COMPARE ROM11
+      # - id: compare-rom11
+      #   name: "Compare rom11"
+      #   run: |
+      #     make compare11
+
+      # # REMOVE BASEROM11
+      # - id: remove-baserom11s
+      #   name: "Remove baserom11s"
+      #   run: |
+      #     rm ${{ env.BASEROM11_FILENAME }}
           
       # UPLOAD ARTIFACTS
       - id: upload-artifacts
