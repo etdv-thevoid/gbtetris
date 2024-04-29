@@ -71,7 +71,7 @@ the sprite. Some values are special, namely:
 
 ```asm
 ; make it readable
-_ EQU $fe
+DEF _ EQU $fe
 
 SpriteT1Objects::
 	dw SpriteDim4x4

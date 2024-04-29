@@ -293,7 +293,7 @@ INCBIN "baserom.gb", $2c00, $2c68 - $2c00
 INCBIN "baserom.gb", $2d10, $2da0 - $2d10
 
 ; make it readable
-_ EQU $fe
+DEF _ EQU $fe
 
 SpriteL0Objects::
 	dw SpriteDim4x4

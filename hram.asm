@@ -1,104 +1,104 @@
-hKeysHeld       EQU $ff80
-hKeysPressed    EQU $ff81
-hVBlankOccured  EQU $ff85
+DEF hKeysHeld       EQU $ff80
+DEF hKeysPressed    EQU $ff81
+DEF hVBlankOccured  EQU $ff85
 
 ; parameters for UpdateSprites
-hOAMBufferPtrHi EQU $ff8d
-hOAMBufferPtrLo EQU $ff8e
-hSpriteCount    EQU $ff8f
+DEF hOAMBufferPtrHi EQU $ff8d
+DEF hOAMBufferPtrLo EQU $ff8e
+DEF hSpriteCount    EQU $ff8f
 
 ; UpdateSprites temp
-hCurSpriteBuffer EQU $ff86 ; ends $ff8c, SPRITE_INFO_SIZE bytes long
-hCurSpriteVisibility EQU hCurSpriteBuffer
-hCurSpriteY          EQU hCurSpriteBuffer + 1
-hCurSpriteX          EQU hCurSpriteBuffer + 2
-hCurSpriteID         EQU hCurSpriteBuffer + 3
-hCurSpriteBelowBG    EQU hCurSpriteBuffer + 4
-hCurSpriteFlip       EQU hCurSpriteBuffer + 5
-hCurSpriteFlags      EQU hCurSpriteBuffer + 6
-hSpriteAnchorY   EQU $ff90
-hSpriteAnchorX   EQU $ff91
-hObjectX         EQU $ff92
-hObjectY         EQU $ff93
-hObjectFlags     EQU $ff94
-hSpriteHidden    EQU $ff95
-hSpriteListPtrHi EQU $ff96
-hSpriteListPtrLo EQU $ff97
+DEF hCurSpriteBuffer     EQU $ff86 ; ends $ff8c, SPRITE_INFO_SIZE bytes long
+DEF hCurSpriteVisibility EQU hCurSpriteBuffer
+DEF hCurSpriteY          EQU hCurSpriteBuffer + 1
+DEF hCurSpriteX          EQU hCurSpriteBuffer + 2
+DEF hCurSpriteID         EQU hCurSpriteBuffer + 3
+DEF hCurSpriteBelowBG    EQU hCurSpriteBuffer + 4
+DEF hCurSpriteFlip       EQU hCurSpriteBuffer + 5
+DEF hCurSpriteFlags      EQU hCurSpriteBuffer + 6
+DEF hSpriteAnchorY       EQU $ff90
+DEF hSpriteAnchorX       EQU $ff91
+DEF hObjectX             EQU $ff92
+DEF hObjectY             EQU $ff93
+DEF hObjectFlags         EQU $ff94
+DEF hSpriteHidden        EQU $ff95
+DEF hSpriteListPtrHi     EQU $ff96
+DEF hSpriteListPtrLo     EQU $ff97
 
-hLockdownStage  EQU $ff98
-hGravityCounter EQU $ff99
-hFallingSpeed   EQU $ff9a
+DEF hLockdownStage  EQU $ff98
+DEF hGravityCounter EQU $ff99
+DEF hFallingSpeed   EQU $ff9a
 
-hCollisionOccured_NeverRead EQU $ff9b
+DEF hCollisionOccured_NeverRead EQU $ff9b
 
-hBlinkCounter  EQU $ff9c
+DEF hBlinkCounter  EQU $ff9c
 
-hLineCount EQU $ff9e
+DEF hLineCount EQU $ff9e
 
-hBuffer               EQU $ffa0
-hSavedIE              EQU $ffa1
-hDelayCounter         EQU $ffa6
-hFastDropDelayCounter EQU $ffa7
+DEF hBuffer               EQU $ffa0
+DEF hSavedIE              EQU $ffa1
+DEF hDelayCounter         EQU $ffa6
+DEF hFastDropDelayCounter EQU $ffa7
 
-hLevel EQU $ffa9
+DEF hLevel EQU $ffa9
 
-hAutoFireCountdown EQU $ffaa
+DEF hAutoFireCountdown EQU $ffaa
 
-hNextNextPiece             EQU $ffae
-hRandomnessPtrHi_NeverRead EQU $ffaf
-hRandomnessPtrLo           EQU $ffb0
+DEF hNextNextPiece             EQU $ffae
+DEF hRandomnessPtrHi_NeverRead EQU $ffaf
+DEF hRandomnessPtrLo           EQU $ffb0
 
-hCoordConversionY  EQU $ffb2
-hCoordConversionX  EQU $ffb3
-hCoordConversionLo EQU $ffb4
-hCoordConversionHi EQU $ffb5
+DEF hCoordConversionY  EQU $ffb2
+DEF hCoordConversionX  EQU $ffb3
+DEF hCoordConversionLo EQU $ffb4
+DEF hCoordConversionHi EQU $ffb5
 
-hOAMDMA EQU $ffb6 ; ends $ffbf, 10 bytes long
+DEF hOAMDMA EQU $ffb6 ; ends $ffbf, 10 bytes long
 
-hGameType      EQU $ffc0
-hMusicType     EQU $ffc1
-hTypeALevel    EQU $ffc2
-hTypeBLevel    EQU $ffc3
-hTypeBHigh     EQU $ffc4
-hMultiplayer   EQU $ffc5
-hDemoCountdown EQU $ffc6
+DEF hGameType      EQU $ffc0
+DEF hMusicType     EQU $ffc1
+DEF hTypeALevel    EQU $ffc2
+DEF hTypeBLevel    EQU $ffc3
+DEF hTypeBHigh     EQU $ffc4
+DEF hMultiplayer   EQU $ffc5
+DEF hDemoCountdown EQU $ffc6
 
-hHighscoreLettersEntered EQU $ffc6
-hHighscoreEnterName      EQU $ffc7
-hHighscorePosition       EQU $ffc8
-hHighscoreNamePtrHi      EQU $ffc9
-hHighscoreNamePtrLo      EQU $ffca
+DEF hHighscoreLettersEntered EQU $ffc6
+DEF hHighscoreEnterName      EQU $ffc7
+DEF hHighscorePosition       EQU $ffc8
+DEF hHighscoreNamePtrHi      EQU $ffc9
+DEF hHighscoreNamePtrLo      EQU $ffca
 
-hMasterSlave     EQU $ffcb
-hSerialDone      EQU $ffcc
-hSerialState     EQU $ffcd
-hSendBufferValid EQU $ffce
-hSendBuffer      EQU $ffcf
-hRecvBuffer      EQU $ffd0
+DEF hMasterSlave     EQU $ffcb
+DEF hSerialDone      EQU $ffcc
+DEF hSerialState     EQU $ffcd
+DEF hSendBufferValid EQU $ffce
+DEF hSendBuffer      EQU $ffcf
+DEF hRecvBuffer      EQU $ffd0
 
 ; Used by DisplayBCD. The values can overlap because the latter is always cleared at the end of the
 ; routine, and the former is local to the subroutine.
-hSeenNonZero EQU $ffe0
-hScoreDirty  EQU $ffe0
+DEF hSeenNonZero EQU $ffe0
+DEF hScoreDirty  EQU $ffe0
 
-hGameState        EQU $ffe1
-hRowToShift       EQU $ffe3
-hDemoNumber       EQU $ffe4
-hFastDropDistance EQU $ffe5
+DEF hGameState        EQU $ffe1
+DEF hRowToShift       EQU $ffe3
+DEF hDemoNumber       EQU $ffe4
+DEF hFastDropDistance EQU $ffe5
 
-hEnableHighscoreVBlank EQU $ffe8
+DEF hEnableHighscoreVBlank EQU $ffe8
 
-hRecordDemo                 EQU $ffe9
-hCountdownTillNextDemoInput EQU $ffea
-hDemoPtrHi                  EQU $ffeb
-hDemoPtrLo                  EQU $ffec
-hLastDemoInput              EQU $ffed
-hTrueInputDuringDemo        EQU $ffee
+DEF hRecordDemo                 EQU $ffe9
+DEF hCountdownTillNextDemoInput EQU $ffea
+DEF hDemoPtrHi                  EQU $ffeb
+DEF hDemoPtrLo                  EQU $ffec
+DEF hLastDemoInput              EQU $ffed
+DEF hTrueInputDuringDemo        EQU $ffee
 
-hMultiplayerNewMusic EQU $fff0
-hStartAtLevel10      EQU $fff4
+DEF hMultiplayerNewMusic EQU $fff0
+DEF hStartAtLevel10      EQU $fff4
 
-hFailedTetrominoPlacements EQU $fffb
+DEF hFailedTetrominoPlacements EQU $fffb
 
-hHighscorePtrHi EQU $fffb
-hHighscorePtrLo EQU $fffc
+DEF hHighscorePtrHi EQU $fffb
+DEF hHighscorePtrLo EQU $fffc
