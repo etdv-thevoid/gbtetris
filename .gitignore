@@ -1,0 +1,8 @@
+*.o
+*.gb
+*.gbc
+*.sym
+*.map
+*.2bpp
+*.1bpp
+*.sn[0-9]

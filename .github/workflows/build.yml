@@ -1,0 +1,99 @@
+# Continuous Integration Workflow
+name: "CI Build"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_call:
+
+env:
+  RGBDS_VERSION: "v0.5.0"
+  BASEROM_FILENAME: "baserom.gb"
+  BASEROM_ARCHIVE_URL: "https://archive.org/download/tetris-gb-v1-0/Tetris%20%28JUE%29%20%28V1.0%29%20%5B%21%5D.gb"
+  BASEROM11_FILENAME: "baserom11.gb"
+  BASEROM11_ARCHIVE_URL: "https://archive.org/download/tetris_gb/tetris.gb"
+
+jobs:
+  build-ubuntu:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+      # SET ENVIRONMENT VARIABLES
+      - id: set-env-var
+        name: "Set environment variables"
+        run: |
+          echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+
+      # INSTALL DEPENDENCIES
+      - id: apt-get-depends
+        name: "Install build dependencies"
+        run: |
+          sudo apt-get update
+          sudo apt-get install bison gcc git make wget -y;
+          
+      # CHECKOUT RGBDS
+      - id: checkout-rgbds
+        name: "Checkout gbdev/rgbds"
+        uses: actions/checkout@v4
+        with:
+          path: rgbds
+          ref: ${{ env.RGBDS_VERSION }}
+          repository: gbdev/rgbds
+      
+      # INSTALL RGBDS
+      - id: install-rgbds
+        name: "Install gbdev/rgbds"
+        working-directory: rgbds
+        run: |
+          sudo make install
+      
+      # CHECKOUT REPOSITORY
+      - id: checkout-repository
+        name: "Checkout repository"
+        uses: actions/checkout@v4
+
+      # DOWNLOAD BASEROM
+      - id: download-baserom
+        name: "Download baserom"
+        run: |
+          wget ${{ env.BASEROM_ARCHIVE_URL }} -O ${{ env.BASEROM_FILENAME }}
+
+      # DOWNLOAD BASEROM11
+      - id: download-baserom11
+        name: "Download baserom11"
+        run: |
+          wget ${{ env.BASEROM11_ARCHIVE_URL }} -O ${{ env.BASEROM11_FILENAME }}
+
+      # BUILD ROMS
+      - id: build-roms
+        name: "Build roms"
+        run: |
+          make
+      
+      # COMPARE ROMS
+      - id: compare-roms
+        name: "Compare roms"
+        run: |
+          make compare
+
+      # REMOVE BASEROMS
+      - id: remove-baseroms
+        name: "Remove baseroms"
+        run: |
+          rm baserom*
+          
+      # UPLOAD ARTIFACTS
+      - id: upload-artifacts
+        name: "Upload artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: "artifacts"
+          retention-days: 1
+          path: |
+            *.gb
+            *.map
+            *.sym
