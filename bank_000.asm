@@ -3943,7 +3943,7 @@ jr_000_286e:
 DisableLCD::
 	ld a, [rIE]
 	ld [hSavedIE], a
-	res IEF_VBLANK_BIT, a
+	res IEB_VBLANK, a
 	ld [rIE], a
 
 .wait_vblank:
