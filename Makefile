@@ -91,8 +91,6 @@ $(foreach obj, $(tetris11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
 
 endif
 
-%.asm: ;
-
 tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
