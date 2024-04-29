@@ -1,5 +1,9 @@
 ### Build objects
 
+baseroms := \
+	baserom.gb \
+	baserom11.gb
+
 roms := \
 	tetris.gb \
 	tetris11.gb
@@ -90,6 +94,8 @@ $(foreach obj, $(tetris_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 $(foreach obj, $(tetris11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
 
 endif
+
+$(baseroms): ;
 
 tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
