@@ -1,4 +1,4 @@
-SECTION "OAM Buffer", WRAM0[$c000]
+SECTION "OAM Buffer", WRAM0
 wOAMBuffer:: ds 16
 wOAMBuffer_CurrentPiece:: ds 16
 wOAMBuffer_NextPiece:: ds 16
@@ -41,7 +41,7 @@ wDidntUseFastDropOnThisPiece:: db
 
 wScoreDirty:: db
 
-SECTION "Sprites", WRAM0[$c200]
+SECTION "Sprites", WRAM0
 ; offset 0: SPRITE_HIDDEN/SPRITE_VISIBLE
 ; offset 1: Y
 ; offset 2: X
@@ -52,25 +52,25 @@ SECTION "Sprites", WRAM0[$c200]
 wSpriteList::
 	ds SPRITE_SIZE * 2 ; haven't seen more than 2 sprites yet
 
-SECTION "Randomness", WRAM0[$c300]
+SECTION "Randomness", WRAM0
 wRandomness::
 	ds 256
 
-SECTION "Tile Map Buffer", WRAM0[$c800]
+SECTION "Tile Map Buffer", WRAM0
 ; not used all the time
 wTileMap::
 	ds SCRN_VX_B * SCRN_VY_B
-SECTION "Stack", WRAM0[$cf00]
+SECTION "Stack", WRAM0
 wStack::
 	ds $100
 wStackEnd::
 
-SECTION "Highscores", WRAM0[$d000]
+SECTION "Highscores", WRAM0
 wTypeBHighscores::
 	ds HIGHSCORE_ENTRY_SIZE * HIGHSCORE_ENTRY_COUNT * TYPE_B_HIGH_COUNT * TYPE_B_LEVEL_COUNT
 wTypeAHighscores::
 	ds HIGHSCORE_ENTRY_SIZE * HIGHSCORE_ENTRY_COUNT * TYPE_A_LEVEL_COUNT
-SECTION "Audio RAM", WRAM0[$df00]
+SECTION "Audio RAM", WRAM0
 wAudio::
 	ds $e0
 

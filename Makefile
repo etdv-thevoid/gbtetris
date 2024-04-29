@@ -94,8 +94,8 @@ endif
 tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
-%.gb: $$(%_obj)
-	$(RGBLINK) -n $*.sym -m $*.map -tdp 0xFF -o $@ $(filter %.o,$^)
+%.gb: $$(%_obj) layout.link
+	$(RGBLINK) -n $*.sym -m $*.map -l layout.link -tdp 0xFF -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
 	sort -o $*.sym $*.sym
 

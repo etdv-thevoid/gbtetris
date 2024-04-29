@@ -1,3 +1,4 @@
+SECTION "Bank01", ROMX
 GenericEmptyRoutine3::
 	ret
 
@@ -5827,3 +5828,5 @@ JumpResetAudio::
 	rept 10
 	nop
 	endr
+
+ENDSECTION
