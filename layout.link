@@ -17,7 +17,7 @@ ROM0
 	"Header"
 	org $0150
 	"Bank00"
-ROMX $01
+ROMX
 	"Bank01"
 WRAM0
 	org $c000
@@ -36,5 +36,5 @@ WRAM0
     "Audio RAM"
 ; VRAM
 ; 	"VRAM"
-HRAM
-	"HRAM"
+; HRAM
+; 	"HRAM"
