@@ -26,10 +26,9 @@ hLockdownStage :: db              ; EQU $ff98
 hGravityCounter:: db              ; EQU $ff99
 hFallingSpeed:: db                ; EQU $ff9a
 hCollisionOccured_NeverRead:: db  ; EQU $ff9b
-hBlinkCounter :: db               ; EQU $ff9c
+hBlinkCounter:: db                ; EQU $ff9c
     ds 1
-hLineCount:: db                   ; EQU $ff9e
-    ds 1
+hLineCount:: dw                   ; EQU $ff9e
 hBuffer:: db                      ; EQU $ffa0
 hSavedIE:: db                     ; EQU $ffa1
     ds 4
@@ -67,7 +66,8 @@ hSerialDone:: db                  ; EQU $ffcc
 hSerialState:: db                 ; EQU $ffcd
 hSendBufferValid:: db             ; EQU $ffce
 hSendBuffer:: db                  ; EQU $ffcf
-hRecvBuffer:: ds 16               ; EQU $ffd0
+hRecvBuffer:: db                  ; EQU $ffd0
+    ds 15
 ; Used by DisplayBCD. The values can overlap because the latter is always cleared at the end of the
 ; routine, and the former is local to the subroutine.
 hSeenNonZero::
@@ -75,8 +75,8 @@ hScoreDirty :: db                 ; EQU $ffe0
 hGameState:: db                   ; EQU $ffe1
 hRowToShift:: db                  ; EQU $ffe3
 hDemoNumber:: db                  ; EQU $ffe4
-hFastDropDistance:: db            ; EQU $ffe5
-    ds 2
+hFastDropDistance:: dw            ; EQU $ffe5
+    ds 1
 hEnableHighscoreVBlank:: db       ; EQU $ffe8
 hRecordDemo:: db                  ; EQU $ffe9
 hCountdownTillNextDemoInput:: db  ; EQU $ffea
