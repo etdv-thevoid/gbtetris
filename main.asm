@@ -1,4 +1,7 @@
 INCLUDE "includes.asm"
-INCLUDE "bank_000.asm"
-INCLUDE "bank_001.asm"
+
+INCLUDE "header.asm"
+INCLUDE "bank00.asm"
+INCLUDE "bank01.asm"
+
 INCLUDE "ram.asm"
