@@ -1,11 +1,17 @@
 ### Build objects
 
+baseroms := \
+	baserom.gb \
+	baserom11.gb
+
 roms := \
 	tetris.gb \
 	tetris11.gb
 
 rom_obj := \
-	main.o
+	header.o \
+	main.o \
+	ram.o
 
 tetris_obj         := $(rom_obj:.o=.o)
 tetris11_obj       := $(rom_obj:.o=11.o)
@@ -58,12 +64,6 @@ tidy:
 tools:
 	$(MAKE) -C tools/
 
-RGBASMFLAGS = 
-# Create a sym/map for debug purposes if `make` run with `DEBUG=1`
-ifeq ($(DEBUG),1)
-RGBASMFLAGS += -E
-endif
-
 $(tetris_obj):         RGBASMFLAGS +=
 $(tetris11_obj):       RGBASMFLAGS += -D INTERNATIONAL
 
@@ -91,11 +91,15 @@ $(foreach obj, $(tetris11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
 
 endif
 
+%.asm: ;
+
+$(baseroms): ;
+
 tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
-%.gb: $$(%_obj)
-	$(RGBLINK) -n $*.sym -m $*.map -tdp 0xFF -o $@ $(filter %.o,$^)
+%.gb: $$(%_obj) layout.link
+	$(RGBLINK) -n $*.sym -m $*.map -l layout.link -tdp 0xFF -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
 	sort -o $*.sym $*.sym
 

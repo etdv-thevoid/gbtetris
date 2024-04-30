@@ -1,3 +1,4 @@
+SECTION "Bank01", ROMX
 GenericEmptyRoutine3::
 	ret
 
