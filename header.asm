@@ -51,4 +51,4 @@ SECTION "Header", ROM0
 
 ; The Game Boy cartridge header data is patched over by rgbfix.
 ; This makes sure it doesn't get used for anything else.
-    ds $0150 - @, $00
+    ds $0150 - $0104, $00
