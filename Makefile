@@ -95,7 +95,7 @@ tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
 %.gb: $$(%_obj)
-	$(RGBLINK) -n $*.sym -m $*.map -tdp 255 -o $@ $(filter %.o,$^)
+	$(RGBLINK) -n $*.sym -m $*.map -tdp 0xFF -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
 	sort -o $*.sym $*.sym
 
