@@ -62,12 +62,6 @@ tidy:
 tools:
 	$(MAKE) -C tools/
 
-RGBASMFLAGS = 
-# Create a sym/map for debug purposes if `make` run with `DEBUG=1`
-ifeq ($(DEBUG),1)
-RGBASMFLAGS += -E
-endif
-
 $(tetris_obj):         RGBASMFLAGS +=
 $(tetris11_obj):       RGBASMFLAGS += -D INTERNATIONAL
 
@@ -94,6 +88,8 @@ $(foreach obj, $(tetris_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 $(foreach obj, $(tetris11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
 
 endif
+
+%.asm: ;
 
 $(baseroms): ;
 
