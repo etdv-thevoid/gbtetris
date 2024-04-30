@@ -31,9 +31,9 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all tetris tetris11 compare compare11 clean tidy tools
+.PHONY: tetris tetris11 compare compare11 clean tidy tools
+.DEFAULT_GOAL := tetris
 
-all:      $(roms)
 tetris:   tetris.gb
 tetris11: tetris11.gb
 
@@ -95,7 +95,7 @@ tetris_opt   = -v -t TETRIS -n 0 -l 1
 tetris11_opt = -v -t TETRIS -n 1 -l 1
 
 %.gb: $$(%_obj)
-	$(RGBLINK) -n $*.sym -m $*.map -tdp 255 -o $@ $(filter %.o,$^)
+	$(RGBLINK) -n $*.sym -m $*.map -tdp 0xFF -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
 	sort -o $*.sym $*.sym
 

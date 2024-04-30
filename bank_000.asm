@@ -40,7 +40,7 @@ SECTION "Serial", ROM0[$58]
 ; In the japanese version of the game, the serial code is located later in the ROM, and this space
 ; is empty.
 IF DEF(INTERNATIONAL)
-	INCLUDE "serial.asm"
+	INCLUDE "engine/serial.asm"
 ENDC
 
 SECTION "Entry Point", ROM0[$100]
@@ -109,14 +109,14 @@ AddBCD::
 	ret
 
 IF !DEF(INTERNATIONAL)
-	INCLUDE "serial.asm"
+	INCLUDE "engine/serial.asm"
 ENDC
 
-INCLUDE "vblank.asm"
-INCLUDE "mainloop.asm"
-INCLUDE "titlescreen.asm"
-INCLUDE "demo.asm"
-INCLUDE "multiplayer.asm"
+INCLUDE "engine/vblank.asm"
+INCLUDE "engine/mainloop.asm"
+INCLUDE "engine/titlescreen.asm"
+INCLUDE "engine/demo.asm"
+INCLUDE "engine/multiplayer.asm"
 
 Call_000_0e21:
 	ld a, [hDelayCounter]
@@ -1343,7 +1343,7 @@ CopyVerticalStrip::
 	jr nz, CopyVerticalStrip
 	ret
 
-INCLUDE "menus.asm"
+INCLUDE "engine/menus.asm"
 
 ; hl = wSpriteList pointer
 ; de = sprite list in ROM
@@ -1379,7 +1379,7 @@ ClearOAM::
 	jr nz, .loop
 	ret
 
-INCLUDE "highscores.asm"
+INCLUDE "engine/highscores.asm"
 
 WriteAInHBlank:
 	ld b, a
@@ -3982,8 +3982,8 @@ INCBIN "gfx/gameover_tilemap.bin"
 PleaseTryAgainTilemap::
 INCBIN "gfx/please_try_again_tilemap.bin"
 
-INCLUDE "utils.asm"
-INCLUDE "sprites.asm"
+INCLUDE "engine/utils.asm"
+INCLUDE "engine/sprites.asm"
 
 GFX_Common2::
 INCBIN "gfx/common2.trunc.2bpp"
@@ -4056,7 +4056,7 @@ INCBIN "gfx/shuttle.trunc.2bpp"
 
 INCBIN "baserom.gb", $62c4, $6330 - $62c4
 
-INCLUDE "demodata.asm"
+INCLUDE "data/demo.asm"
 
 DemoRandomness::
 	; type A demo
