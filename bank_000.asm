@@ -1399,7 +1399,7 @@ LoadPlayfield::
 	ld [wSpriteList sprite 1 + SPRITE_OFFSET_VISIBILITY], a
 	ld [hLockdownStage], a
 	ld [hBlinkCounter], a
-	ld [hCollisionOccured_NeverRead], a
+	ld [hCollisionOccured], a
 	ld [hFailedTetrominoPlacements], a
 	ld [$ff00+$9f], a
 	ld a, " "
@@ -3571,14 +3571,14 @@ CheckCollision::
 
 .out_of_bounds:
 	xor a
-	ld [hCollisionOccured_NeverRead], a
+	ld [hCollisionOccured], a
 	ret
 
 .found_collision:
 	pop bc
 	pop hl
 	ld a, 1
-	ld [hCollisionOccured_NeverRead], a
+	ld [hCollisionOccured], a
 	ret
 
 HandleLockdownTransferToTilemap:

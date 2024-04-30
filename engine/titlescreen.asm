@@ -58,7 +58,7 @@ LoadTitlescreen::
 	ld [hRecordDemo], a
 	ld [hLockdownStage], a
 	ld [hBlinkCounter], a
-	ld [hCollisionOccured_NeverRead], a
+	ld [hCollisionOccured], a
 	ld [hFailedTetrominoPlacements], a
 	ld [$ff00+$9f], a
 	ld [hRowToShift], a

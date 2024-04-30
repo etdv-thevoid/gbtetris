@@ -29,7 +29,7 @@ hLockdownStage  EQU $ff98
 hGravityCounter EQU $ff99
 hFallingSpeed   EQU $ff9a
 
-hCollisionOccured_NeverRead EQU $ff9b
+hCollisionOccured EQU $ff9b
 
 hBlinkCounter  EQU $ff9c
 
@@ -45,7 +45,7 @@ hLevel EQU $ffa9
 hAutoFireCountdown EQU $ffaa
 
 hNextNextPiece             EQU $ffae
-hRandomnessPtrHi_NeverRead EQU $ffaf
+hRandomnessPtrHi EQU $ffaf
 hRandomnessPtrLo           EQU $ffb0
 
 hCoordConversionY  EQU $ffb2

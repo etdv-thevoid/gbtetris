@@ -452,7 +452,7 @@ Jump_000_0895:
 	ld [$c210], a
 	ld [hLockdownStage], a
 	ld [hBlinkCounter], a
-	ld [hCollisionOccured_NeverRead], a
+	ld [hCollisionOccured], a
 	ld [hFailedTetrominoPlacements], a
 	ld [$ff00+$9f], a
 	ld [hSerialDone], a
@@ -766,7 +766,7 @@ jr_000_0a53:
 	ld a, [hl+]
 	ld [wSpriteList sprite 1 + SPRITE_OFFSET_ID], a
 	ld a, h
-	ld [hRandomnessPtrHi_NeverRead], a
+	ld [hRandomnessPtrHi], a
 	ld a, l
 	ld [hRandomnessPtrLo], a
 	ret
