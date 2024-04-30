@@ -1,6 +1,7 @@
 SECTION "HRAM", HRAM
 hKeysHeld:: db                    ; EQU $ff80
-hKeysPressed:: ds 4               ; EQU $ff81
+hKeysPressed:: db                 ; EQU $ff81
+    ds 3
 hVBlankOccured :: db              ; EQU $ff85
 hCurSpriteBuffer::
 hCurSpriteVisibility:: db         ; EQU $ff86
@@ -25,22 +26,30 @@ hLockdownStage :: db              ; EQU $ff98
 hGravityCounter:: db              ; EQU $ff99
 hFallingSpeed:: db                ; EQU $ff9a
 hCollisionOccured_NeverRead:: db  ; EQU $ff9b
-hBlinkCounter :: ds 2             ; EQU $ff9c
-hLineCount:: ds 2                 ; EQU $ff9e
+hBlinkCounter :: db               ; EQU $ff9c
+    ds 1
+hLineCount:: db                   ; EQU $ff9e
+    ds 1
 hBuffer:: db                      ; EQU $ffa0
-hSavedIE:: ds 5                   ; EQU $ffa1
+hSavedIE:: db                     ; EQU $ffa1
+    ds 4
 hDelayCounter:: db                ; EQU $ffa6
-hFastDropDelayCounter:: ds 2      ; EQU $ffa7
+hFastDropDelayCounter:: db        ; EQU $ffa7
+    ds 1
 hLevel:: db                       ; EQU $ffa9
-hAutoFireCountdown:: ds 4         ; EQU $ffaa
+hAutoFireCountdown:: db           ; EQU $ffaa
+    ds 3
 hNextNextPiece:: db               ; EQU $ffae
 hRandomnessPtrHi_NeverRead:: db   ; EQU $ffaf
-hRandomnessPtrLo:: ds 2           ; EQU $ffb0
+hRandomnessPtrLo:: db             ; EQU $ffb0
+    ds 1
 hCoordConversionY :: db           ; EQU $ffb2
 hCoordConversionX :: db           ; EQU $ffb3
 hCoordConversionLo:: db           ; EQU $ffb4
 hCoordConversionHi:: db           ; EQU $ffb5
+
 hOAMDMA:: ds 10                   ; EQU $ffb6 ; ends $ffbf
+
 hGameType:: db                    ; EQU $ffc0
 hMusicType:: db                   ; EQU $ffc1
 hTypeALevel:: db                  ; EQU $ffc2
@@ -66,16 +75,20 @@ hScoreDirty :: db                 ; EQU $ffe0
 hGameState:: db                   ; EQU $ffe1
 hRowToShift:: db                  ; EQU $ffe3
 hDemoNumber:: db                  ; EQU $ffe4
-hFastDropDistance:: ds 3          ; EQU $ffe5
+hFastDropDistance:: db            ; EQU $ffe5
+    ds 2
 hEnableHighscoreVBlank:: db       ; EQU $ffe8
 hRecordDemo:: db                  ; EQU $ffe9
 hCountdownTillNextDemoInput:: db  ; EQU $ffea
 hDemoPtrHi:: db                   ; EQU $ffeb
 hDemoPtrLo:: db                   ; EQU $ffec
 hLastDemoInput:: db               ; EQU $ffed
-hTrueInputDuringDemo:: ds 2       ; EQU $ffee
-hMultiplayerNewMusic:: ds 4       ; EQU $fff0
-hStartAtLevel10:: ds 7            ; EQU $fff4
+hTrueInputDuringDemo:: db         ; EQU $ffee
+    ds 1
+hMultiplayerNewMusic:: db         ; EQU $fff0
+    ds 3
+hStartAtLevel10:: db              ; EQU $fff4
+    ds 6
 hFailedTetrominoPlacements::
 hHighscorePtrHi:: db              ; EQU $fffb
 hHighscorePtrLo:: db              ; EQU $fffc
