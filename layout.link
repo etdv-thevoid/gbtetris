@@ -26,7 +26,7 @@ WRAM0
     "Sprites"
     org $c300
     "Randomness"
-    org $cf00
+    org $c800
     "Tile Map Buffer"
     org $cf00
     "Stack"

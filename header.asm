@@ -45,7 +45,7 @@ ENDC
 
 ; Nintendo requires all Game Boy ROMs to begin with a nop ($00) and a jp ($C3)
 ; to the starting address.
-SECTION "Header", ROM0[$100]
+SECTION "Header", ROM0
 	nop
 	jp Boot
 
