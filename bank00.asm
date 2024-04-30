@@ -55,14 +55,14 @@ AddBCD::
 	ret
 
 IF !DEF(INTERNATIONAL)
-	INCLUDE "engine/serial.asm"
+	INCLUDE "code/serial/serial.asm"
 ENDC
 
-INCLUDE "engine/vblank.asm"
-INCLUDE "engine/mainloop.asm"
-INCLUDE "engine/titlescreen.asm"
-INCLUDE "engine/demo.asm"
-INCLUDE "engine/multiplayer.asm"
+INCLUDE "code/vblank.asm"
+INCLUDE "code/mainloop.asm"
+INCLUDE "code/titlescreen.asm"
+INCLUDE "code/demo.asm"
+INCLUDE "code/multiplayer.asm"
 
 Call_000_0e21:
 	ld a, [hDelayCounter]
@@ -1289,7 +1289,7 @@ CopyVerticalStrip::
 	jr nz, CopyVerticalStrip
 	ret
 
-INCLUDE "engine/menus.asm"
+INCLUDE "code/menus.asm"
 
 ; hl = wSpriteList pointer
 ; de = sprite list in ROM
@@ -1325,7 +1325,7 @@ ClearOAM::
 	jr nz, .loop
 	ret
 
-INCLUDE "engine/highscores.asm"
+INCLUDE "code/highscores.asm"
 
 WriteAInHBlank:
 	ld b, a
@@ -3928,8 +3928,8 @@ INCBIN "gfx/gameover_tilemap.bin"
 PleaseTryAgainTilemap::
 INCBIN "gfx/please_try_again_tilemap.bin"
 
-INCLUDE "engine/utils.asm"
-INCLUDE "engine/sprites.asm"
+INCLUDE "code/utils.asm"
+INCLUDE "code/sprites/sprites.asm"
 
 GFX_Common2::
 INCBIN "gfx/common2.trunc.2bpp"

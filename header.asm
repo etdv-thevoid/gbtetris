@@ -42,7 +42,7 @@ SECTION "Serial", ROM0
 ; In the japanese version of the game, the serial code is located later in the ROM,
 ; and this space is empty.
 IF DEF(INTERNATIONAL)
-	INCLUDE "engine/serial.asm"
+	INCLUDE "code/serial/serial.asm"
 ENDC
 
 ; Nintendo requires all Game Boy ROMs to begin with a nop ($00) and a jp ($C3)
