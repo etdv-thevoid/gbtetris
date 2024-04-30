@@ -37,11 +37,11 @@ RGBLINK ?= $(RGBDS)rgblink
 tetris:   tetris.gb
 tetris11: tetris11.gb
 
-compare: $(roms)
-	@$(SHA1) -c tetris.sha1
+compare:
+	$(SHA1) -c tetris.sha1
 
-compare11: $(roms)
-	@$(SHA1) -c tetris11.sha1
+compare11:
+	$(SHA1) -c tetris11.sha1
 
 clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' \) -exec rm {} +
