@@ -11,7 +11,7 @@ on:
   workflow_call:
 
 env:
-  RGBDS_VERSION: "v0.5.0"
+  RGBDS_VERSION: "v0.5.2"
   BASEROM_FILENAME: "baserom.gb"
   BASEROM_ARCHIVE_URL: "https://archive.org/download/tetris-gb-v1-0/Tetris%20%28JUE%29%20%28V1.0%29%20%5B%21%5D.gb"
   BASEROM11_FILENAME: "baserom11.gb"
