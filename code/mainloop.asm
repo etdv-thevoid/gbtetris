@@ -20,7 +20,7 @@ SoftReset:
 	xor a
 	ld [rSCY], a
 	ld [rSCX], a
-	ld [$ff00+$a4], a
+	ld [hUnknown_ffa4], a
 	ld [rSTAT], a
 	ld [rSB], a
 	ld [rSC], a

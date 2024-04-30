@@ -477,7 +477,7 @@ jr_001_6722:
 	and b
 	ret nc
 
-	ld a, [$ff00+$e0]
+	ld a, [hScoreDirty]
 	ret nc
 
 	ret nz

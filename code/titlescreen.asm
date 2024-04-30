@@ -60,10 +60,10 @@ LoadTitlescreen::
 	ld [hBlinkCounter], a
 	ld [hCollisionOccured_NeverRead], a
 	ld [hFailedTetrominoPlacements], a
-	ld [$ff00+$9f], a
+	ld [hUnknown_ff9f], a
 	ld [hRowToShift], a
 IF !DEF(INTERNATIONAL)
-	ld [$ff00+$e7], a
+	ld [hUnknown_ffe7], a
 ENDC
 	ld [hHighscoreEnterName], a
 	call ClearedLinesListReset

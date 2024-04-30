@@ -45,7 +45,7 @@ AddBCD::
 	daa
 	ld [hl], a
 	ld a, 1
-	ld [$ff00+$e0], a
+	ld [hScoreDirty], a
 	ret nc
 
 	ld a, $99
@@ -92,7 +92,7 @@ Call_000_0e21:
 	ld [hl], a
 
 jr_000_0e49:
-	ld a, [$ff00+$d7]
+	ld a, [hUnknown_ffd7]
 	cp $05
 	jr nz, jr_000_0e77
 
@@ -150,13 +150,13 @@ HandleState30::
 	and a
 	ret nz
 
-	ld a, [$ff00+$ef]
+	ld a, [hUnknown_ffef]
 	and a
 	jr nz, jr_000_0e95
 
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	inc a
-	ld [$ff00+$d8], a
+	ld [hUnknown_ffd8], a
 
 jr_000_0e95:
 	call Call_000_0fd3
@@ -173,7 +173,7 @@ jr_000_0ea4:
 	call LoadSprites
 	ld a, $19
 	ld [hDelayCounter], a
-	ld a, [$ff00+$ef]
+	ld a, [hUnknown_ffef]
 	and a
 	jr z, jr_000_0eba
 
@@ -187,7 +187,7 @@ jr_000_0eba:
 	ld [hGameState], a
 	ld a, $09
 	ld [wPlaySong], a
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	cp $05
 	ret nz
 
@@ -197,7 +197,7 @@ jr_000_0eba:
 
 
 jr_000_0ed3:
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	cp $05
 	jr nz, jr_000_0ee0
 
@@ -268,7 +268,7 @@ Call_000_0f12:
 	ld [hl], a
 
 jr_000_0f33:
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	cp $05
 	jr nz, jr_000_0f6b
 
@@ -333,11 +333,11 @@ jr_000_0f6b:
 Call_000_0f7b:
 	push af
 	push hl
-	ld a, [$ff00+$d7]
+	ld a, [hUnknown_ffd7]
 	cp $05
 	jr z, jr_000_0f9d
 
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	cp $05
 	jr z, jr_000_0f9d
 
@@ -453,14 +453,14 @@ Call_000_0fd3:
 	ld [hl], $bc
 
 jr_000_101d:
-	ld a, [$ff00+$ef]
+	ld a, [hUnknown_ffef]
 	and a
 	jr nz, jr_000_1025
 
 	call Call_000_10e9
 
 jr_000_1025:
-	ld a, [$ff00+$d7]
+	ld a, [hUnknown_ffd7]
 	and a
 	jr z, jr_000_1073
 
@@ -493,7 +493,7 @@ jr_000_104f:
 	ld [hBuffer], a
 	ld hl, $99e7
 	call Call_000_10ce
-	ld a, [$ff00+$d9]
+	ld a, [hUnknown_ffd9]
 	and a
 	jr z, jr_000_1073
 
@@ -508,7 +508,7 @@ jr_000_104f:
 	call Call_000_113c
 
 jr_000_1073:
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	and a
 	jr z, jr_000_10b6
 
@@ -541,7 +541,7 @@ jr_000_109d:
 	ld [hBuffer], a
 	ld hl, $9827
 	call Call_000_10ce
-	ld a, [$ff00+$da]
+	ld a, [hUnknown_ffda]
 	and a
 	jr z, jr_000_10b6
 
@@ -552,7 +552,7 @@ jr_000_109d:
 	call Call_000_10ce
 
 jr_000_10b6:
-	ld a, [$ff00+$db]
+	ld a, [hUnknown_ffdb]
 	and a
 	jr z, jr_000_10c6
 
@@ -598,15 +598,15 @@ jr_000_10d6:
 Call_000_10e9:
 	ld hl, $ffd7
 	ld de, $ffd8
-	ld a, [$ff00+$d9]
+	ld a, [hUnknown_ffd9]
 	and a
 	jr nz, jr_000_112e
 
-	ld a, [$ff00+$da]
+	ld a, [hUnknown_ffda]
 	and a
 	jr nz, jr_000_1135
 
-	ld a, [$ff00+$db]
+	ld a, [hUnknown_ffdb]
 	and a
 	jr nz, jr_000_111f
 
@@ -636,12 +636,12 @@ jr_000_1114:
 
 jr_000_1116:
 	xor a
-	ld [$ff00+$db], a
+	ld [hUnknown_ffdb], a
 
 jr_000_1119:
 	xor a
-	ld [$ff00+$d9], a
-	ld [$ff00+$da], a
+	ld [hUnknown_ffd9], a
+	ld [hUnknown_ffda], a
 	ret
 
 
@@ -650,16 +650,16 @@ jr_000_111f:
 	cp $04
 	jr nz, jr_000_112a
 
-	ld [$ff00+$d9], a
+	ld [hUnknown_ffd9], a
 
 jr_000_1126:
 	xor a
-	ld [$ff00+$db], a
+	ld [hUnknown_ffdb], a
 	ret
 
 
 jr_000_112a:
-	ld [$ff00+$da], a
+	ld [hUnknown_ffda], a
 	jr jr_000_1126
 
 jr_000_112e:
@@ -740,21 +740,21 @@ HandleState31::
 
 	call ClearOAM
 	xor a
-	ld [$ff00+$ef], a
+	ld [hUnknown_ffef], a
 	ld b, $27
 	ld c, $79
 	call Call_000_11a3
 	call JumpResetAudio
-	ld a, [$ff00+$d7]
+	ld a, [hUnknown_ffd7]
 	cp $05
 	jr z, jr_000_119e
 
-	ld a, [$ff00+$d8]
+	ld a, [hUnknown_ffd8]
 	cp $05
 	jr z, jr_000_119e
 
 	ld a, $01
-	ld [$ff00+$d6], a
+	ld [hUnknown_ffd6], a
 
 jr_000_119e:
 	ld a, $16
@@ -1083,12 +1083,12 @@ HandleState46::
 	ld hl, $c200
 	ld c, 3
 	call LoadSprites
-	ld a, [$ff00+$f3]
+	ld a, [hUnknown_fff3]
 	ld [$c203], a
 	ld a, $03
 	call UpdateNSprites
 	xor a
-	ld [$ff00+$f3], a
+	ld [hUnknown_fff3], a
 	ld a, $db
 	ld [rLCDC], a
 	ld a, $bb
@@ -1347,7 +1347,7 @@ LoadPlayfield::
 	ld [hBlinkCounter], a
 	ld [hCollisionOccured_NeverRead], a
 	ld [hFailedTetrominoPlacements], a
-	ld [$ff00+$9f], a
+	ld [hUnknown_ff9f], a
 	ld a, " "
 	call FillPlayfieldWithTileAndDoSomethingElseImNotSure
 	call Call_000_204d
@@ -1355,7 +1355,7 @@ LoadPlayfield::
 	xor a
 	ld [hRowToShift], a
 IF !DEF(INTERNATIONAL)
-	ld [$ff00+$e7], a
+	ld [hUnknown_ffe7], a
 ENDC
 	call ClearOAM
 	ld a, [hGameType]
@@ -1369,7 +1369,7 @@ ENDC
 	ld de, $3ed7
 .got_game_type_stuff:
 	push de
-	ld [$ff00+$e6], a
+	ld [hUnknown_ffe6], a
 	ld a, [hl]
 	ld [hLevel], a
 	call LoadTilemapA
@@ -1381,9 +1381,9 @@ ENDC
 	ld c, 10
 	call Copy8TilesWide
 	ld h, $98
-	ld a, [$ff00+$e6]
+	ld a, [hUnknown_ffe6]
 	ld l, a
-	ld a, [$ff00+$a9]
+	ld a, [hLevel]
 	ld [hl], a
 	ld h, $9c
 	ld [hl], a
@@ -1412,7 +1412,7 @@ jr_000_1ad7:
 	xor a
 
 jr_000_1af5:
-	ld [$ff00+$9e], a
+	ld [hLineCount], a
 	and $0f
 	ld [hl-], a
 	jr z, jr_000_1afe
@@ -1475,7 +1475,7 @@ jr_000_1b3b:
 
 
 Call_000_1b43:
-	ld a, [$ff00+$a9]
+	ld a, [hLevel]
 	ld e, a
 	ld a, [hStartAtLevel10]
 	and a
@@ -1702,7 +1702,7 @@ jr_000_1c23:
 
 HandleGameplay::
 	call Call_000_1c68
-	ld a, [$ff00+$ab]
+	ld a, [hUnknown_ffab]
 	and a
 	ret nz
 
@@ -1758,9 +1758,9 @@ Call_000_1c68:
 	jr nz, .unk1cc5
 
 	ld hl, rLCDC
-	ld a, [$ff00+$ab]
+	ld a, [hUnknown_ffab]
 	xor 1
-	ld [$ff00+$ab], a
+	ld [hUnknown_ffab], a
 	jr z, .unk1cb5
 
 	set 3, [hl]
@@ -1808,22 +1808,22 @@ Call_000_1c68:
 	cp $29
 	ret nz
 
-	ld a, [$ff00+$ab]
+	ld a, [hUnknown_ffab]
 	xor $01
-	ld [$ff00+$ab], a
+	ld [hUnknown_ffab], a
 	jr z, jr_000_1d05
 
 	ld a, $01
 	ld [$df7f], a
 	ld a, [hRecvBuffer]
-	ld [$ff00+$f2], a
+	ld [hUnknown_fff2], a
 	ld a, [hSendBuffer]
-	ld [$ff00+$f1], a
+	ld [hUnknown_fff1], a
 	call Call_000_1d26
 	ret
 
 Call_000_1ce3:
-	ld a, [$ff00+$ab]
+	ld a, [hUnknown_ffab]
 	and a
 	ret z
 
@@ -1851,14 +1851,14 @@ jr_000_1cfc:
 	jr z, jr_000_1d24
 
 jr_000_1d05:
-	ld a, [$ff00+$f2]
+	ld a, [hUnknown_fff2]
 	ld [hRecvBuffer], a
-	ld a, [$ff00+$f1]
+	ld a, [hUnknown_fff1]
 	ld [hSendBuffer], a
 	ld a, $02
 	ld [$df7f], a
 	xor a
-	ld [$ff00+$ab], a
+	ld [hUnknown_ffab], a
 	ld hl, $98ee
 	ld b, $8e
 	ld c, $05
@@ -1930,7 +1930,7 @@ jr_000_1d6a:
 	ld a, $16
 	jr nz, jr_000_1d7e
 
-	ld a, [$ff00+$c0]
+	ld a, [hGameType]
 	cp $37
 	ld a, $10
 	jr z, jr_000_1d7e
@@ -1949,7 +1949,7 @@ HandleState5::
 	ld hl, $c802
 	ld de, $28dd
 	call Call_000_2858
-	ld a, [$ff00+$c3]
+	ld a, [hTypeBLevel]
 	and a
 	jr z, jr_000_1dc1
 
@@ -1984,7 +1984,7 @@ jr_000_1dc1:
 	call UpdateNextTetromino
 	call JumpResetAudio
 	ld a, $25
-	ld [$ff00+$9e], a
+	ld [hLineCount], a
 	ld a, $0b
 	ld [hGameState], a
 	ret
@@ -2001,7 +2001,7 @@ jr_000_1de6:
 	dec b
 	jr nz, jr_000_1de6
 
-	ld a, [$ff00+$c3]
+	ld a, [hTypeBLevel]
 	ld b, a
 	inc b
 
@@ -2092,7 +2092,7 @@ jr_000_1e55:
 	dec b
 	jr nz, jr_000_1e55
 
-	ld a, [$ff00+$c4]
+	ld a, [hTypeBHigh]
 	cp $05
 	jr nz, jr_000_1e6a
 
@@ -2111,11 +2111,11 @@ jr_000_1e73:
 	dec b
 	jr nz, jr_000_1e73
 
-	ld a, [$ff00+$c4]
+	ld a, [hTypeBHigh]
 	add $0a
 	ld [wPlaySong], a
 	ld a, $25
-	ld [$ff00+$9e], a
+	ld [hLineCount], a
 	ld a, $1b
 	ld [hDelayCounter], a
 	ld a, $23
@@ -2185,7 +2185,7 @@ jr_000_1ec5:
 	ret nz
 
 	call ClearOAM
-	ld a, [$ff00+$c4]
+	ld a, [hTypeBHigh]
 	cp $05
 	ld a, $26
 	jr z, jr_000_1ee1
@@ -2345,7 +2345,7 @@ jr_000_1fc9:
 
 jr_000_1fcc:
 	ld a, b
-	ld [$ff00+$f3], a
+	ld [hUnknown_fff3], a
 	ld a, $90
 	ld [hDelayCounter], a
 	ld a, $34
@@ -2415,7 +2415,7 @@ Call_000_1fec:
 
 jr_000_201e:
 	ld [hl], $00
-	ld a, [$ff00+$a9]
+	ld a, [hLevel]
 	ld b, a
 	inc b
 
@@ -2514,12 +2514,12 @@ SpawnNewTetromino::
 .save_pointer: ; </bullshit>
 	ld a, l
 	ld [hRandomnessPtrLo], a
-	ld a, [$ff00+$d3]
+	ld a, [hUnknown_ffd3]
 	and a
 	jr z, .end
 
 	or $80
-	ld [$ff00+$d3], a
+	ld [hUnknown_ffd3], a
 	jr .end
 
 .random:
@@ -2785,9 +2785,9 @@ LookForFullLines::
 	jr z, .type_b
 
 IF !DEF(INTERNATIONAL)
-	ld a, [$ff00+$e7] ; TODO
+	ld a, [hUnknown_ffe7] ; TODO
 	add b
-	ld [$ff00+$e7], a
+	ld [hUnknown_ffe7], a
 ENDC
 
 	ld a, b
@@ -2843,7 +2843,7 @@ ENDC
 .end:
 	inc [hl]
 	ld a, b
-	ld [$ff00+$dc], a ; TODO
+	ld [hUnknown_ffdc], a ; TODO
 	ld a, c
 	ld [wPlayPulseSFX], a
 	ret
@@ -3073,7 +3073,7 @@ ENDM
 	cp STATE_26
 	ret nz
 
-	ld a, [$ff00+$d4]
+	ld a, [hUnknown_ffd4]
 	and a
 	jr z, .end
 
@@ -3097,7 +3097,7 @@ ENDM
 	coord hl, vBGMapB, 13, 3
 	call RenderScore
 	ld a, 1
-	ld [$ff00+$e0], a
+	ld [hScoreDirty], a
 	ret
 
 	rowshift 18
@@ -3152,7 +3152,7 @@ ShiftRow19::
 	and a
 	jr z, .singleplayer
 
-	ld [$ff00+$d5], a
+	ld [hUnknown_ffd5], a
 	ret
 
 .singleplayer:
@@ -3174,12 +3174,12 @@ ShiftRow19::
 	cp STATE_26
 	ret nz
 
-	ld a, [$ff00+$d4]
+	ld a, [hUnknown_ffd4]
 	and a
 	jr z, .unk2449
 
 	xor a
-	ld [$ff00+$d4], a
+	ld [hUnknown_ffd4], a
 	ret
 
 ; If the game is playing, and the game type is A, update the score on the tilemap.
@@ -3219,7 +3219,7 @@ IF DEF(INTERNATIONAL)
 	ret z
 
 	call LevelToBCD
-	ld a, [$ff00+$9f]
+	ld a, [hUnknown_ff9f]
 	ld d, a
 	and $f0
 	ret nz
@@ -3227,7 +3227,7 @@ IF DEF(INTERNATIONAL)
 	and $0f
 	swap a
 	ld d, a
-	ld a, [$ff00+$9e]
+	ld a, [hLineCount]
 	and $f0
 	swap a
 	or d
@@ -3240,14 +3240,14 @@ ELSE
 	cp 9
 	jr nc, jr_000_24fd
 
-	ld a, [$ff00+$e7]
+	ld a, [hUnknown_ffe7]
 	cp $0a
 	ret c
 
 	sub $0a
 
 jr_000_24c3:
-	ld [$ff00+$e7], a
+	ld [hUnknown_ffe7], a
 	inc [hl]
 	ld a, [hl]
 	cp $15
@@ -3304,7 +3304,7 @@ ENDC
 
 IF !DEF(INTERNATIONAL)
 jr_000_24fd:
-	ld a, [$ff00+$e7]
+	ld a, [hUnknown_ffe7]
 	cp $14
 	ret c
 
@@ -3606,7 +3606,7 @@ Call_000_262d:
 
 jr_000_264b:
 	push bc
-	ld a, [$ff00+$c3]
+	ld a, [hTypeBLevel]
 	ld b, a
 	inc b
 
@@ -3626,7 +3626,7 @@ jr_000_2650:
 	pop de
 	call DisplayBCD_ThreeBytes
 	pop de
-	ld a, [$ff00+$c3]
+	ld a, [hTypeBLevel]
 	ld b, a
 	inc b
 	ld hl, $c0a0
