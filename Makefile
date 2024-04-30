@@ -102,14 +102,17 @@ tetris11_opt = -v -t TETRIS -n 1 -l 1
 
 ### Misc file-specific graphics rules
 
-gfx/common2.2bpp: gfx/common2.png
-	rgbgfx -d 2 --trim-end 11 -o $@ $<
+gfx/common2.trunc.2bpp: gfx/common2.2bpp
+	cp $< $@
+	truncate -s 3152 $@
 
-gfx/titlescreen.2bpp: gfx/titlescreen.png
-	rgbgfx -d 2 --trim-end 3 -o $@ $<
+gfx/titlescreen.trunc.2bpp: gfx/titlescreen.2bpp
+	cp $< $@
+	truncate -s 1744 $@
 
-gfx/shuttle.2bpp: gfx/shuttle.png
-	rgbgfx -d 2 --trim-end 3 -o $@ $<
+gfx/shuttle.trunc.2bpp: gfx/shuttle.2bpp
+	cp $< $@
+	truncate -s 3280 $@
 
 
 ### Catch-all graphics rules
