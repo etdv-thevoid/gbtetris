@@ -1,5 +1,5 @@
 SECTION "Bank00", ROM0
-Boot:
+Boot::
 	jp Init
 
 ; I can't think of a way this could ever be useful. Maybe something to do with the hardware being
