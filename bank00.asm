@@ -1,4 +1,4 @@
-SECTION "Bank00", ROM0[$150]
+SECTION "Bank00", ROM0
 Boot:
 	jp Init
 

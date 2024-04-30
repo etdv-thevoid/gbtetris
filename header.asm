@@ -1,14 +1,14 @@
-SECTION "rst0", ROM0[$0]
+SECTION "rst0", ROM0
 	jp Init
 
 rept 5
 	nop
 endr
 
-SECTION "rst8", ROM0[$8]
+SECTION "rst8", ROM0
 	jp Init
 
-SECTION "rst28", ROM0[$28]
+SECTION "rst28", ROM0
 	; Implements the `jumptable` macro. A list of 16-bit code pointers should follow.
 	; A = jumptable entry number
 	; Clobbers A, DE and HL
@@ -25,16 +25,16 @@ SECTION "rst28", ROM0[$28]
 	pop hl     ; jp hl
 	jp hl
 
-SECTION "VBlank", ROM0[$40]
+SECTION "VBlank", ROM0
 	jp VBlankInterrupt
 
-SECTION "LCDC", ROM0[$48]
+SECTION "LCDC", ROM0
 	jp EmptyInterrupt
 
-SECTION "Timer", ROM0[$50]
+SECTION "Timer", ROM0
 	jp EmptyInterrupt
 
-SECTION "Serial", ROM0[$58]
+SECTION "Serial", ROM0
 	jp SerialInterrupt
 
 ; In the japanese version of the game, the serial code is located later in the ROM,

@@ -1,0 +1,40 @@
+ROM0
+	org $0000
+	"rst0"
+	org $0008
+	"rst8"
+	org $0028
+	"rst28"
+	org $0040
+	"VBlank"
+	org $0048
+	"LCDC"
+	org $0050
+	"Timer"
+	org $0058
+	"Serial"
+	org $0100
+	"Header"
+	org $0150
+	"Bank00"
+ROMX $01
+	"Bank01"
+WRAM0
+	org $c000
+    "OAM Buffer"
+    org $c200
+    "Sprites"
+    org $c300
+    "Randomness"
+    org $cf00
+    "Tile Map Buffer"
+    org $cf00
+    "Stack"
+    org $d000
+    "Highscores"
+    org $df00
+    "Audio RAM"
+; VRAM
+; 	"VRAM"
+HRAM
+	"HRAM"
