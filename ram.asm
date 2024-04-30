@@ -1,0 +1,1 @@
+INCLUDE "ram/wram.asm"
