@@ -3986,7 +3986,7 @@ INCLUDE "engine/utils.asm"
 INCLUDE "engine/sprites.asm"
 
 GFX_Common2::
-INCBIN "gfx/common2.trunc.2bpp"
+INCBIN "gfx/common2.2bpp"
 
 TypeAPlayfieldTilemap::
 INCBIN "gfx/playfield_a.bin"
@@ -4003,7 +4003,7 @@ GFX_Common::
 INCBIN "gfx/common.2bpp"
 
 GFX_Titlescreen::
-INCBIN "gfx/titlescreen.trunc.2bpp"
+INCBIN "gfx/titlescreen.2bpp"
 ; end order assumption
 
 CopyrightTilemap::
@@ -4052,7 +4052,7 @@ INCBIN "gfx/multiplayer_menu_tilemap.bin"
 INCBIN "baserom.gb", $53c4, $55f4 - $53c4
 
 ShuttleGFX::
-INCBIN "gfx/shuttle.trunc.2bpp"
+INCBIN "gfx/shuttle.2bpp"
 
 INCBIN "baserom.gb", $62c4, $6330 - $62c4
 
