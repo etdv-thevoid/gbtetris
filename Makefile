@@ -9,7 +9,9 @@ roms := \
 	tetris11.gb
 
 rom_obj := \
-	main.o
+	header.o \
+	main.o \
+	ram.o
 
 tetris_obj         := $(rom_obj:.o=.o)
 tetris11_obj       := $(rom_obj:.o=11.o)

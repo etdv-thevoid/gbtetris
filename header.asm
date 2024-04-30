@@ -1,3 +1,5 @@
+INCLUDE "includes.asm"
+
 SECTION "rst0", ROM0
 	jp Init
 
