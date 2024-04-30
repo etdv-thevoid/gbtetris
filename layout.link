@@ -20,7 +20,6 @@ ROM0
 ; ROMX
 	"Bank01"
 WRAM0
-	org $c000
     "OAM Buffer"
     org $c200
     "Sprites"
