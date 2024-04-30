@@ -35,5 +35,5 @@ WRAM0
     "Audio RAM"
 ; VRAM
 ; 	"VRAM"
-; HRAM
-; 	"HRAM"
+HRAM
+	"HRAM"
