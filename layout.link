@@ -17,7 +17,7 @@ ROM0
 	"Header"
 	org $0150
 	"Bank00"
-ROMX
+; ROMX
 	"Bank01"
 WRAM0
 	org $c000
